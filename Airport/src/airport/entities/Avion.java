@@ -1,7 +1,7 @@
 /**
  * 
  */
-package entities;
+package airport.entities;
 
 /**
  * @author Ana Barragan
@@ -26,13 +26,6 @@ public class Avion {
 	 */
 	private Integer capacidad;
 	
-	/**
-	 * Constructor de la clase Avion
-	 */
-	public Avion() {
-		super();
-	}
-
 	/**
 	 * retorna el identificvador unico del avion
 	 * @return Numero de tipo Long con el Id del Avion
