@@ -1,17 +1,24 @@
 /**
  * 
  */
-package airport.entities;
+package main.java.airport.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author Ana Barragan
  *
  */
+@Entity
+@Table(name = "Avion")
 public class Avion {
 	
 	/**
 	 * Identificador unico del Avion
 	 */
+	@Id
 	private Long idAvion;
 	/**
 	 * Modelo del Avion

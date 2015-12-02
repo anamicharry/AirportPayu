@@ -1,4 +1,4 @@
-package airport.dao;
+package main.java.airport.dao;
 
 public interface AvionDAO {
 
