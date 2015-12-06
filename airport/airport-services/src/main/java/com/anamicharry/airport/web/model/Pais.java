@@ -18,7 +18,7 @@ import org.hibernate.annotations.NamedQuery;
  *
  */
 @Entity
-@NamedQuery(name="Pai.findAll", query="SELECT p FROM Pai p")
+@NamedQuery(name="Pais.findAll", query="SELECT p FROM Pais p")
 public class Pais {
 
 	@Id
