@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core">
+   
+    <f:view>
+        <head>
+            <title>Introducir Datos de Pasajero</title>
+        </head>
+        <body>
+            <center>
+                <h:form>
+                    <style type="text/css">s
+                    </style>
+                    <h3>Introducir Datos del Pasajero</h3>
+                    <table>
+                     	<tr>
+                            <td>Número Identificación:</td>
+                            <td>
+                                <h:inputText value="#{PasajeroBB.pasajero.identificacion}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Primer Nombre:</td>
+                            <td>
+                                <h:inputText value="#{PasajeroBB.pasajero.primerNombre}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Segundo Nombre:</td>
+                            <td>
+                                <h:inputText value="#{PasajeroBB.pasajero.segundoNombre}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Primer Apellido:</td>
+                            <td>
+                                <h:inputText value="#{PasajeroBB.pasajero.primerApellido}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Segundo Apellido:</td>
+                            <td>
+                                <h:inputText value="#{PasajeroBB.pasajero.segundoApellido}"/>
+                            </td>
+                        </tr>                       
+                    </table>
+                       
+                    <p>
+                        <h:commandButton value="Aceptar" action="#{PasajeroBB.savePasajero}"/>    
+                        &nbsp;
+                        <h:commandButton value="Reiniciar" type="reset"/>
+                    </p>    
+                </h:form>
+            </center>
+        </body>
+    </f:view>    
+</html>

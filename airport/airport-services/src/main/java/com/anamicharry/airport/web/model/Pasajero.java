@@ -22,14 +22,12 @@ import org.hibernate.annotations.NamedQuery;
 @NamedQuery(name="Pasajero.findAll", query="SELECT p FROM Pasajero p")
 public class Pasajero {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id	
 	private Long identificacion;
 	private String primerNombre;
 	private String segundoNombre;
 	private String primerApellido;
 	private String segundoApellido;
-	private Date fechaNacimineto;
 	
 	//bi-directional many-to-one association to Reserva
 	@OneToMany(mappedBy="pasajero")
@@ -95,19 +93,7 @@ public class Pasajero {
 	public void setSegundoApellido(String segundoApellido) {
 		this.segundoApellido = segundoApellido;
 	}
-	/**
-	 * @return the fechaNacimineto
-	 */
-	public Date getFechaNacimineto() {
-		return fechaNacimineto;
-	}
-	/**
-	 * @param fechaNacimineto the fechaNacimineto to set
-	 */
-	public void setFechaNacimineto(Date fechaNacimineto) {
-		this.fechaNacimineto = fechaNacimineto;
-	}
-	
+		
 	public List<Reserva> getReservas() {
 		return this.reservas;
 	}

@@ -25,13 +25,29 @@ public class PasajeroDao {
 	private EntityManager entityManager;
 
 	@Transactional
-	public void save(Pasajero pasajero) {
-		entityManager.persist(pasajero);
+	public Pasajero save(Pasajero pasajero) {
+		Pasajero result = pasajero;
+		if (pasajero.getIdentificacion() == null) {
+			entityManager.persist(pasajero);
+		} else {
+			if (!entityManager.contains(pasajero)) {
+				result = entityManager.merge(pasajero);
+			}
+		}
+		return result;
+	}
+	
+	public void delete(Pasajero pasajero){
+		entityManager.remove(pasajero);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Pasajero> list() {
 		return entityManager.createQuery("select t from Pasajero t")
 				.getResultList();
+	}
+	
+	public Pasajero getStamp(Long id) {
+		return entityManager.find(Pasajero.class, id);
 	}
 }
