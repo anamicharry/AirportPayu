@@ -4,17 +4,22 @@
 package com.anamicharry.airport.web.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.NamedQuery;
 
 /**
  * @author Ana Barragán
  *
  */
 @Entity
+@NamedQuery(name="Pasajero.findAll", query="SELECT p FROM Pasajero p")
 public class Pasajero {
 	
 	@Id
@@ -25,6 +30,11 @@ public class Pasajero {
 	private String primerApellido;
 	private String segundoApellido;
 	private Date fechaNacimineto;
+	
+	//bi-directional many-to-one association to Reserva
+	@OneToMany(mappedBy="pasajero")
+	private List<Reserva> reservas;
+		
 	/**
 	 * @return the identificacion
 	 */
@@ -98,5 +108,26 @@ public class Pasajero {
 		this.fechaNacimineto = fechaNacimineto;
 	}
 	
+	public List<Reserva> getReservas() {
+		return this.reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+
+	public Reserva addReserva(Reserva reserva) {
+		getReservas().add(reserva);
+		reserva.setPasajero(this);
+
+		return reserva;
+	}
+
+	public Reserva removeReserva(Reserva reserva) {
+		getReservas().remove(reserva);
+		reserva.setPasajero(null);
+
+		return reserva;
+	}
 	
 }

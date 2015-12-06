@@ -3,16 +3,22 @@
  */
 package com.anamicharry.airport.web.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.NamedQuery;
 
 /**
  * @author Ana Barragán
  *
  */
 @Entity
+@NamedQuery(name="Avion.findAll", query="SELECT a FROM Avion a")
 public class Avion {
 
 	@Id
@@ -21,6 +27,15 @@ public class Avion {
 	private String modelo;
 	private String fabricante;
 	private String capacidad;
+	
+	//bi-directional many-to-one association to Silla
+	@OneToMany(mappedBy="avion")
+	private List<Silla> sillas;
+
+	//bi-directional many-to-one association to Vuelo
+	@OneToMany(mappedBy="avion")
+	private List<Vuelo> vuelos;
+		
 	/**
 	 * @return the idAvion
 	 */
@@ -70,5 +85,48 @@ public class Avion {
 		this.capacidad = capacidad;
 	}
 	
+	public List<Silla> getSillas() {
+		return this.sillas;
+	}
+
+	public void setSillas(List<Silla> sillas) {
+		this.sillas = sillas;
+	}
+
+	public Silla addSilla(Silla silla) {
+		getSillas().add(silla);
+		silla.setAvion(this);
+
+		return silla;
+	}
+
+	public Silla removeSilla(Silla silla) {
+		getSillas().remove(silla);
+		silla.setAvion(null);
+
+		return silla;
+	}
+
+	public List<Vuelo> getVuelos() {
+		return this.vuelos;
+	}
+
+	public void setVuelos(List<Vuelo> vuelos) {
+		this.vuelos = vuelos;
+	}
+
+	public Vuelo addVuelo(Vuelo vuelo) {
+		getVuelos().add(vuelo);
+		vuelo.setAvion(this);
+
+		return vuelo;
+	}
+
+	public Vuelo removeVuelo(Vuelo vuelo) {
+		getVuelos().remove(vuelo);
+		vuelo.setAvion(null);
+
+		return vuelo;
+	}
 	
 }

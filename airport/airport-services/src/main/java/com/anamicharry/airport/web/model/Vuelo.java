@@ -4,17 +4,24 @@
 package com.anamicharry.airport.web.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.NamedQuery;
 
 /**
  * @author Ana Barragán
  *
  */
 @Entity
+@NamedQuery(name="Vuelo.findAll", query="SELECT v FROM Vuelo v")
 public class Vuelo {
 
 	@Id
@@ -23,6 +30,20 @@ public class Vuelo {
 	private Date fechaVuelo;
 	private Date HoraInicio;
 	private Date Horafin;
+	
+	//bi-directional many-to-one association to Reserva
+	@OneToMany(mappedBy="vuelo")
+	private List<Reserva> reservas;
+	
+	//bi-directional many-to-one association to Ruta
+	@ManyToOne	
+	@JoinColumn(name="ruta_idruta", referencedColumnName="idruta")	
+	private Ruta ruta;
+
+	//bi-directional many-to-one association to Avion
+	@ManyToOne
+	private Avion avion;
+		
 	/**
 	 * @return the idVuelo
 	 */
@@ -71,4 +92,43 @@ public class Vuelo {
 	public void setHorafin(Date horafin) {
 		Horafin = horafin;
 	}	
+	
+	public List<Reserva> getReservas() {
+		return this.reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+
+	public Reserva addReserva(Reserva reserva) {
+		getReservas().add(reserva);
+		reserva.setVuelo(this);
+
+		return reserva;
+	}
+
+	public Reserva removeReserva(Reserva reserva) {
+		getReservas().remove(reserva);
+		reserva.setVuelo(null);
+
+		return reserva;
+	}
+	
+	public Avion getAvion() {
+		return this.avion;
+	}
+
+	public void setAvion(Avion avion) {
+		this.avion = avion;
+	}
+
+	public Ruta getRuta() {
+		return this.ruta;
+	}
+
+	public void setRuta(Ruta ruta) {
+		this.ruta = ruta;
+	}
+	
 }

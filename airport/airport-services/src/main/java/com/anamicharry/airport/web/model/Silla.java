@@ -7,12 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.NamedQuery;
 
 /**
  * @author Ana Barragán
  *
  */
 @Entity
+@NamedQuery(name="Silla.findAll", query="SELECT s FROM Silla s")
 public class Silla {
 	
 	@Id
@@ -20,6 +24,11 @@ public class Silla {
 	private Long idSilla;
 	private String clase;
 	private String numSilla;
+	
+	//bi-directional many-to-one association to Avion
+	@ManyToOne
+	private Avion avion;
+		
 	/**
 	 * @return the idSilla
 	 */
@@ -57,5 +66,11 @@ public class Silla {
 		this.numSilla = numSilla;
 	}
 	
+	public Avion getAvion() {
+		return this.avion;
+	}
+	public void setAvion(Avion avion) {
+		this.avion = avion;
+	}
 	
 }
