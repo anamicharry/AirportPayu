@@ -23,7 +23,7 @@ public class Avion {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long idAvion;
+	private Long idAvion;
 	private String modelo;
 	private String fabricante;
 	private String capacidad;
@@ -39,13 +39,13 @@ public class Avion {
 	/**
 	 * @return the idAvion
 	 */
-	public long getIdAvion() {
+	public Long getIdAvion() {
 		return idAvion;
 	}
 	/**
 	 * @param idAvion the idAvion to set
 	 */
-	public void setIdAvion(long idAvion) {
+	public void setIdAvion(Long idAvion) {
 		this.idAvion = idAvion;
 	}
 	/**
