@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.anamicharry.airport.web.model.Avion;
-import com.anamicharry.airport.web.model.Ruta;
 
 /**
  * @author Ana Barragán
