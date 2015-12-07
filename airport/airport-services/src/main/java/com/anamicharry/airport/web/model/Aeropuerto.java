@@ -65,12 +65,12 @@ public class Aeropuerto {
 		this.nombreAeropuerto = nombreAeropuerto;
 	}	
 	
-	public Pais getPai() {
+	public Pais getPais() {
 		return this.pais;
 	}
 
-	public void setPai(Pais pai) {
-		this.pais = pai;
+	public void setPais(Pais pais) {
+		this.pais = pais;
 	}
 
 	public List<Ruta> getRutas1() {

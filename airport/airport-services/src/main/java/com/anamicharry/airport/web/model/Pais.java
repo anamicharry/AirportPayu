@@ -69,14 +69,14 @@ public class Pais {
 
 	public Aeropuerto addAeropuerto(Aeropuerto aeropuerto) {
 		getAeropuertos().add(aeropuerto);
-		aeropuerto.setPai(this);
+		aeropuerto.setPais(this);
 
 		return aeropuerto;
 	}
 
 	public Aeropuerto removeAeropuerto(Aeropuerto aeropuerto) {
 		getAeropuertos().remove(aeropuerto);
-		aeropuerto.setPai(null);
+		aeropuerto.setPais(null);
 
 		return aeropuerto;
 	}
