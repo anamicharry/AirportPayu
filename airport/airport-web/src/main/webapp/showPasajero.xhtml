@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">		
+		<h:form>
+			<div jsf:id="wrapper"
+				style="border-top: 1px solid #d0d0d0; margin-top: 12px; padding-top: 12px">
+				<h:inputText value="#{PasajeroBB.pasajero.identificacion}" id="taskDesc" p:placeholder="Id del pasajero" maxlength="48" required="true" label="Task">
+					<f:validateLength maximum="48"/>
+				</h:inputText>	
+				<br />		
+				<br />	
+				<h:commandButton action="#{PasajeroBB.findPasajero(PasajeroBB.pasajero.identificacion)}" value="Consultar" />				
+			</div>
+
+		</h:form>
+		<h2>Pasajero:</h2>
+		<table>
+			<ui:repeat value="#{PasajeroBB.findPasajero(PasajeroBB.pasajero.identificacion)}" var="v_task">
+				<tr>
+					<td>Identificacion: </td>
+					<td>#{v_task.identificacion}</td>	
+					<td>Nombre: </td>									
+					<td>#{v_task.primerNombre}</td>					
+					<td>#{v_task.segundoNombre}</td>					
+					<td>#{v_task.primerApellido}</td>					
+					<td>#{v_task.segundoApellido}</td>					
+				</tr>
+			</ui:repeat>
+		</table>
+		
+	</ui:define>
+</ui:composition>

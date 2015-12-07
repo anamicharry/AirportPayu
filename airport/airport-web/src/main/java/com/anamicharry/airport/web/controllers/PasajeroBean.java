@@ -58,8 +58,19 @@ public class PasajeroBean {
 	public void savePasajero() {
 		parajeroDao.save(pasajero);
 		pasajero = new Pasajero();
-		invalidatePasajeros();
+		invalidatePasajeros();	
+	}
 	
+	public void deletePasajero(Long id){
+		parajeroDao.delete(id);
+		pasajero = new Pasajero();
+		invalidatePasajeros();
+	}
+	
+	public Pasajero findPasajero(Long id){
+		return parajeroDao.getPasajero(id);
+		/*pasajero = new Pasajero();
+		invalidatePasajeros();*/
 	}
 
 	private void invalidatePasajeros() {

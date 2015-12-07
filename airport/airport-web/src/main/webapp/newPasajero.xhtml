@@ -50,7 +50,13 @@
                     <p>
                         <h:commandButton value="Aceptar" action="#{PasajeroBB.savePasajero}"/>    
                         &nbsp;
+                        <h:commandButton value="Eliminar" action="#{PasajeroBB.deletePasajero(PasajeroBB.pasajero.identificacion)}"/>    
+                        &nbsp;
+                        <br/>
+                        <br/>
                         <h:commandButton value="Reiniciar" type="reset"/>
+                        &nbsp;
+                        <h:button value="Consultar" outcome="showPasajero.xhtml"/> 
                     </p>    
                 </h:form>
             </center>

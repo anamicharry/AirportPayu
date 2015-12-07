@@ -37,8 +37,12 @@ public class PasajeroDao {
 		return result;
 	}
 	
-	public void delete(Pasajero pasajero){
+	@Transactional
+	public void delete(Long id){		
+		//entityManager.remove(Pasajero.class, id);
+		Pasajero pasajero = entityManager.find(Pasajero.class, id);		
 		entityManager.remove(pasajero);
+		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -47,7 +51,7 @@ public class PasajeroDao {
 				.getResultList();
 	}
 	
-	public Pasajero getStamp(Long id) {
+	public Pasajero getPasajero(Long id) {
 		return entityManager.find(Pasajero.class, id);
 	}
 }
